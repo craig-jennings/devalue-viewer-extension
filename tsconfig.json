@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"allowImportingTsExtensions": true,
+		"erasableSyntaxOnly": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"lib": ["esnext", "dom"],
+		"module": "esnext",
+		"moduleResolution": "bundler",
+		"noEmit": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"target": "esnext",
+		"types": ["chrome"]
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "dist"]
+}

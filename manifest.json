@@ -1,0 +1,9 @@
+{
+	"manifest_version": 3,
+	"name": "Devalue Viewer",
+	"version": "0.1.0",
+	"description": "Chromium DevTools extension to view network responses using devalue",
+	"devtools_page": "devtools.html",
+	"permissions": ["webRequest"],
+	"host_permissions": ["<all_urls>"]
+}

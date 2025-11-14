@@ -1,0 +1,32 @@
+<script lang="ts">
+	import { parse } from 'devalue';
+
+	interface Props {
+		content: string;
+	}
+
+	/* -- Runes -- */
+	let { content }: Props = $props();
+
+	const parsedContent = $derived.by(() => {
+		const json = JSON.parse(content);
+		let acc: Record<string, unknown> = {};
+
+		for (const key in json) {
+			try {
+				// Attempt to parse as devalue-encoded string
+				const parsed = parse(json[key]);
+
+				acc[key] = parsed;
+			} catch {
+				acc[key] = json[key];
+			}
+		}
+
+		return acc;
+	});
+
+	/* -- Event Handlers -- */
+</script>
+
+<pre>{JSON.stringify(parsedContent, null, 2)}</pre>
