@@ -5,42 +5,48 @@
 	/* -- Event Handlers -- */
 </script>
 
-<div class="flex h-12 items-center justify-between gap-2 border-b border-zinc-500 px-2 py-1">
-	<input
-		bind:value={requestStore.query}
-		class="w-[300px] rounded-lg border border-zinc-400 p-2"
-		placeholder="Filter requests..."
-	/>
+<div class="flex h-[var(--header-height)] items-center justify-between border-b border-zinc-500">
+	<input bind:value={requestStore.query} placeholder="Filter" type="search" />
 
-	<button class="p-2 hover:cursor-pointer" title="Delete Requests" onclick={() => requestStore.clear()}>
+	<button title="Clear Request Log" onclick={() => requestStore.clear()}>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			width="20"
-			height="20"
+			width="16"
+			height="16"
 			viewBox="0 0 24 24"
 			fill="none"
 			stroke="currentColor"
 			stroke-width="2"
 			stroke-linecap="round"
 			stroke-linejoin="round"
+			class="rotate-90"
 		>
-			<path d="M10 11v6" /><path d="M14 11v6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /><path
-				d="M3 6h18"
-			/>
-			<path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+			<path d="M4.929 4.929 19.07 19.071" />
+			<circle cx="12" cy="12" r="10" />
 		</svg>
 	</button>
 </div>
 
 <style>
 	input {
-		inline-size: calc(300px - var(--spacing) * 4);
+		block-size: 100%;
+		border: 1px solid transparent;
+		flex: 1 1 0;
+		font-size: 12px;
+		padding-inline: 8px;
+
+		&:focus {
+			border-color: var(--color-zinc-300);
+			outline: none;
+		}
 	}
 
 	button {
 		border: 1px solid transparent;
 		border-radius: 8px;
 		cursor: pointer;
+		margin-inline: 8px;
+		padding: 8px;
 		transition:
 			border-color 0.2s ease-out,
 			filter 0.2s ease-out;

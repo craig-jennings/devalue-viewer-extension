@@ -28,3 +28,9 @@
 		</li>
 	{/each}
 </ul>
+
+<style>
+	ul {
+		overflow: auto;
+	}
+</style>

@@ -29,4 +29,4 @@
 	/* -- Event Handlers -- */
 </script>
 
-<pre>{JSON.stringify(parsedContent, null, 2)}</pre>
+<pre class="text-zinc-100">{JSON.stringify(parsedContent, null, 2)}</pre>

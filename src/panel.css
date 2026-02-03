@@ -5,6 +5,10 @@
 }
 
 @layer base {
+	:root {
+		--header-height: 48px;
+	}
+
 	* {
 		scrollbar-color: var(--color-zinc-400) transparent;
 		scrollbar-width: thin;
@@ -17,7 +21,7 @@
 	body {
 		background-color: var(--color-zinc-900);
 		color: var(--color-zinc-50);
-		min-height: 100vh;
+		height: 100vh;
 	}
 
 	pre {

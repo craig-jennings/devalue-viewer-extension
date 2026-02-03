@@ -26,11 +26,9 @@
 			>
 		</div>
 
-		<div
-			class={['overflow-x-auto rounded-xl border border-zinc-400 p-2', activeTab === 'RESPONSE' ? 'block' : 'hidden']}
-		>
+		<div class={['overflow-auto rounded-xl border border-zinc-400 p-2', activeTab === 'RESPONSE' ? 'block' : 'hidden']}>
 			<svelte:boundary>
-				<pre class="min-w-0">{JSON.stringify(JSON.parse(content), null, 2)}</pre>
+				<pre class="min-w-0 text-zinc-50">{JSON.stringify(JSON.parse(content), null, 2)}</pre>
 
 				{#snippet failed()}
 					Invalid JSON response
@@ -38,9 +36,7 @@
 			</svelte:boundary>
 		</div>
 
-		<div
-			class={['overflow-x-auto rounded-xl border border-zinc-400 p-2', activeTab === 'DEVALUED' ? 'block' : 'hidden']}
-		>
+		<div class={['overflow-auto rounded-xl border border-zinc-400 p-2', activeTab === 'DEVALUED' ? 'block' : 'hidden']}>
 			<Devalue {content} />
 		</div>
 	</div>

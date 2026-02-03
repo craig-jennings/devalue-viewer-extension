@@ -4,6 +4,7 @@
 	import ActiveRequest from './ActiveRequest.svelte';
 	import Header from './Header.svelte';
 	import RequestList from './RequestList.svelte';
+	import Resizable from './Resizable.svelte';
 
 	/* -- Runes -- */
 	$effect(() => {
@@ -24,50 +25,30 @@
 	});
 
 	/* -- Event Handlers -- */
-	const handleDrag = (e: DragEvent) => {
-		const newX = e.clientX;
-
-		// Skip the last drag event where clientX is 0
-		if (newX === 0) return;
-
-		document.documentElement.style.setProperty('--sidebar-width', `${newX}px`);
-	};
 </script>
 
 <Header />
 
-<div class="grid">
-	<RequestList />
-
-	<div
-		class="separator h-full w-full cursor-col-resize bg-zinc-500"
-		ondrag={handleDrag}
-		role="separator"
-		tabindex="-1"
-	></div>
-
-	<div class="min-w-0">
-		<ActiveRequest />
+<main>
+	<div class="list">
+		<RequestList />
 	</div>
-</div>
+
+	<Resizable>
+		<ActiveRequest />
+	</Resizable>
+</main>
 
 <style>
-	.grid {
-		display: grid;
-		grid-template-columns: var(--sidebar-width, 200px) 1px 1fr;
-		min-height: calc(100vh - 48px);
+	main {
+		display: flex;
+		min-height: calc(100vh - var(--header-height));
 	}
 
-	.separator {
-		position: relative;
-
-		&:hover::after {
-			background-color: oklch(0 0 0 / 0.1);
-			block-size: 100%;
-			content: '';
-			inline-size: 4px;
-			position: absolute;
-			z-index: 1;
-		}
+	.list {
+		flex: 1 1 0;
+		max-height: calc(100vh - var(--header-height));
+		min-inline-size: 0;
+		overflow: auto;
 	}
 </style>
