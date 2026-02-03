@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { requestStore } from '../stores/requests.svelte';
-	import { EnrichedRequest } from '../types/enriched-request';
+	import { type EnrichedRequest } from '../types/enriched-request';
 	import ActiveRequest from './ActiveRequest.svelte';
 	import Header from './Header.svelte';
 	import RequestList from './RequestList.svelte';
