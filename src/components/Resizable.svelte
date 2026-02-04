@@ -9,36 +9,38 @@
 	let { axis = 'x', children }: Props = $props();
 
 	let resizing = false;
-	let size = $state(350);
+	let size = $state(150);
 </script>
 
 <svelte:window
 	onmouseup={() => (resizing = false)}
-	onmousemove={({ pageX: x, pageY: y }) => {
+	onmousemove={({ pageX }) => {
 		if (!resizing) return;
 
-		size = axis === 'x' ? window.innerWidth - 8 - x : window.innerHeight - 8 - y;
+		size = pageX;
 	}}
 />
 
-<aside class={axis} style="{axis === 'x' ? 'width' : 'height'}: {size}px">
+<aside class={axis} style:--size="{size}px">
+	<div class="content">{@render children()}</div>
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div class="{axis} resize" onmousedown={() => (resizing = true)}></div>
-	<div>{@render children()}</div>
 </aside>
 
 <style>
 	aside {
 		display: grid;
 		max-height: calc(100vh - var(--header-height));
-		overflow: auto;
+		overflow-y: auto;
 
 		&.x {
-			grid-template-columns: auto 1fr;
+			grid-template-columns: 1fr auto;
 		}
-		&.y {
-			grid-template-rows: auto 1fr;
-		}
+	}
+
+	.content {
+		inline-size: var(--size);
+		overflow-y: auto;
 	}
 
 	.resize {
@@ -56,12 +58,6 @@
 			bottom: 0;
 			cursor: ew-resize;
 			inline-size: 0.2rem;
-		}
-
-		&.y {
-			block-size: 0.2rem;
-			cursor: ns-resize;
-			right: 0;
 		}
 	}
 </style>

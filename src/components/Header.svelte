@@ -42,14 +42,15 @@
 	}
 
 	button {
+		block-size: 100%;
 		border: 1px solid transparent;
 		border-radius: 8px;
 		cursor: pointer;
-		margin-inline: 8px;
-		padding: 8px;
+		margin-inline: 4px;
+		padding-inline: 8px;
 		transition:
-			border-color 0.2s ease-out,
-			filter 0.2s ease-out;
+			border-color 120ms ease-out,
+			filter 120ms ease-out;
 
 		&:hover {
 			border-color: var(--color-zinc-400);

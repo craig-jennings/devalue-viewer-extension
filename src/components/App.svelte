@@ -30,13 +30,13 @@
 <Header />
 
 <main>
-	<div class="list">
-		<RequestList />
-	</div>
-
 	<Resizable>
-		<ActiveRequest />
+		<RequestList />
 	</Resizable>
+
+	<div class="request">
+		<ActiveRequest />
+	</div>
 </main>
 
 <style>
@@ -45,10 +45,10 @@
 		min-height: calc(100vh - var(--header-height));
 	}
 
-	.list {
+	.request {
 		flex: 1 1 0;
 		max-height: calc(100vh - var(--header-height));
 		min-inline-size: 0;
-		overflow: auto;
+		overflow-y: auto;
 	}
 </style>

@@ -9,11 +9,13 @@
 	{#each requestStore.requests as request (request.time)}
 		<li class={['border-b border-zinc-500', requestStore.activeRequest === request ? 'bg-zinc-700' : 'bg-transparent']}>
 			<button
-				class="flex w-full max-w-(--sidebar-width) cursor-pointer items-center justify-start gap-2 p-2 text-start"
+				class="flex w-full cursor-pointer items-center justify-start gap-2 p-2 text-start"
 				type="button"
 				onclick={() => requestStore.setActiveRequest(request)}
 			>
-				<div class={['rounded-xl px-2 py-1', request.request.method === 'POST' ? 'bg-emerald-500' : 'bg-sky-500']}>
+				<div
+					class={['rounded-xl px-2 py-1 text-xs', request.request.method === 'POST' ? 'bg-emerald-500' : 'bg-sky-500']}
+				>
 					{request.request.method}
 				</div>
 
