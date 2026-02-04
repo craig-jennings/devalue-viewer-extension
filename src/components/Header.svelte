@@ -36,24 +36,22 @@
 		padding-inline: 8px;
 
 		&:focus {
-			border-color: var(--color-zinc-300);
+			border-color: var(--color-zinc-400);
 			outline: none;
 		}
 	}
 
 	button {
-		block-size: 100%;
-		border: 1px solid transparent;
-		border-radius: 8px;
+		border-radius: 100vw;
 		cursor: pointer;
 		margin-inline: 4px;
-		padding-inline: 8px;
+		padding: 6px;
 		transition:
-			border-color 120ms ease-out,
+			background-color 120ms ease-out,
 			filter 120ms ease-out;
 
 		&:hover {
-			border-color: var(--color-zinc-400);
+			background-color: var(--color-zinc-700);
 		}
 
 		&:active {
