@@ -33,20 +33,7 @@
 		</div>
 
 		<div class={['tab-panel', activeTab === 'REQUEST' ? 'block' : 'hidden']}>
-			<svelte:boundary>
-				{@const data = JSON.parse(request?.postData?.text || '{}')}
-
-				<Devalue
-					content={JSON.stringify({
-						...data,
-						payload: data.payload ? atob(data.payload) : undefined,
-					})}
-				/>
-
-				{#snippet failed()}
-					Invalid JSON Request
-				{/snippet}
-			</svelte:boundary>
+			<Devalue content={request?.postData?.text || '{}'} />
 		</div>
 
 		<div class={['tab-panel', activeTab === 'RESPONSE' ? 'block' : 'hidden']}>

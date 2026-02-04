@@ -19,7 +19,15 @@
 
 				acc[key] = parsed;
 			} catch {
-				acc[key] = json[key];
+				try {
+					// Attempt to parse base64-encoded devalue string
+					const decoded = atob(json[key] as string);
+					const parsed = parse(decoded);
+
+					acc[key] = parsed;
+				} catch {
+					acc[key] = json[key];
+				}
 			}
 		}
 
