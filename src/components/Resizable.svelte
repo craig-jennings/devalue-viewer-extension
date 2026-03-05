@@ -9,7 +9,7 @@
 	let { axis = 'x', children }: Props = $props();
 
 	let resizing = false;
-	let size = $state(150);
+	let size = $state(200);
 </script>
 
 <svelte:window

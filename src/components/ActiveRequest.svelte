@@ -9,11 +9,19 @@
 	let content = $derived(await getResponseBody(requestStore.activeRequest));
 	let request = $derived(requestStore.activeRequest?.request);
 
+	let requestInfo = $derived.by(() => {
+		if (request?.method === 'GET') {
+			return JSON.stringify({ payload: new URL(request.url).searchParams.get('payload') });
+		}
+
+		return request?.postData?.text || '{}';
+	});
+
 	/* -- Event Handlers -- */
 </script>
 
 {#if content}
-	<div class="flex max-h-full flex-col gap-[5px] bg-zinc-800">
+	<div class="flex h-full max-h-full flex-col gap-[5px] bg-zinc-800">
 		<div role="tablist" class="tabs">
 			<button
 				role="tab"
@@ -33,7 +41,7 @@
 		</div>
 
 		<div class={['tab-panel', activeTab === 'REQUEST' ? 'block' : 'hidden']}>
-			<Devalue content={request?.postData?.text || '{}'} />
+			<Devalue content={requestInfo} />
 		</div>
 
 		<div class={['tab-panel', activeTab === 'RESPONSE' ? 'block' : 'hidden']}>
@@ -72,6 +80,7 @@
 	}
 
 	.tab-panel {
+		block-size: 100%;
 		border-block-start: 1px solid var(--color-zinc-400);
 		overflow: auto;
 		padding: calc(var(--spacing) * 2);
