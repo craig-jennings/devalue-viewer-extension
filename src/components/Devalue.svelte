@@ -22,7 +22,11 @@
 				try {
 					// Attempt to parse base64-encoded devalue string
 					const decoded = atob(json[key] as string);
-					const parsed = parse(decoded);
+
+					//	Remove the first entry of the array because it's throw-away values
+					const decodedJson = JSON.parse(decoded).slice(1);
+
+					const parsed = parse(JSON.stringify(decodedJson));
 
 					acc[key] = parsed;
 				} catch {
