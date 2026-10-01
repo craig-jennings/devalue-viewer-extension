@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { parse } from 'devalue';
+	import { parseDevalue } from '../utils/parse-devalue';
 
 	interface Props {
 		content: string;
@@ -13,26 +13,7 @@
 		let acc: Record<string, unknown> = {};
 
 		for (const key in json) {
-			try {
-				// Attempt to parse as devalue-encoded string
-				const parsed = parse(json[key]);
-
-				acc[key] = parsed;
-			} catch {
-				try {
-					// Attempt to parse base64-encoded devalue string
-					const decoded = atob(json[key] as string);
-
-					//	Remove the first entry of the array because it's throw-away values
-					const decodedJson = JSON.parse(decoded).slice(1);
-
-					const parsed = parse(JSON.stringify(decodedJson));
-
-					acc[key] = parsed;
-				} catch {
-					acc[key] = json[key];
-				}
-			}
+			acc[key] = parseDevalue(json[key]);
 		}
 
 		return acc;

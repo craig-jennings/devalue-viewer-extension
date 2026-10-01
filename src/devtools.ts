@@ -34,8 +34,6 @@ chrome.devtools.network.onRequestFinished.addListener(async (request) => {
 });
 
 chrome.devtools.panels.create('Devalue', '', 'src/panel.html', (panel) => {
-	console.log('Devalue viewer panel created');
-
 	panel.onShown.addListener((window) => {
 		panelWindow = window;
 
